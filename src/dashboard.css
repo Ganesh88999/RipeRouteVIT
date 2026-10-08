@@ -1,0 +1,114 @@
+.command-center {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+html[lang="en"] .command-center {
+  --font-sans: "DM Sans", "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.command-center .dash-card {
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+}
+
+/* Selectable chips — must beat .dash-card border specificity */
+.command-center button.dash-option {
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  color: var(--color-ink);
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.command-center button.dash-option:hover {
+  border-color: color-mix(in srgb, var(--color-forest) 40%, var(--color-line));
+}
+
+.command-center button.dash-option.is-selected {
+  border-color: var(--color-forest);
+  background: color-mix(in srgb, var(--color-forest) 12%, var(--color-card));
+  box-shadow: inset 0 0 0 1px var(--color-forest);
+  font-weight: 600;
+}
+
+.command-center button.dash-option:focus-visible {
+  outline: 2px solid var(--color-leaf);
+  outline-offset: 2px;
+}
+
+.command-center .dash-card-hover {
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.command-center .dash-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -18px rgba(18, 60, 42, 0.45);
+  border-color: color-mix(in srgb, var(--color-forest) 35%, var(--color-line));
+}
+
+.command-center .dash-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-line);
+  border-radius: 9999px;
+  background: var(--color-card);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8125rem;
+  transition:
+    transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.command-center .dash-btn:hover {
+  transform: translateY(-1px) scale(1.015);
+  border-color: color-mix(in srgb, var(--color-forest) 40%, var(--color-line));
+  box-shadow: 0 8px 18px -14px rgba(18, 60, 42, 0.5);
+}
+
+.command-center .dash-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.command-center .dash-btn-primary {
+  border-color: transparent;
+  background: var(--color-forest);
+  color: white;
+}
+
+.command-center .dash-btn-primary:hover {
+  background: var(--color-forest-deep);
+}
+
+.command-center .dash-pulse {
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-leaf) 55%, transparent);
+  animation: dash-status-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes dash-status-pulse {
+  50% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .command-center .dash-pulse {
+    animation: none !important;
+  }
+
+  .command-center .dash-btn:hover,
+  .command-center .dash-card-hover:hover {
+    transform: none;
+  }
+}

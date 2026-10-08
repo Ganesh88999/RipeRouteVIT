@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+
+  --color-canvas: #f3efe6;
+  --color-canvas-warm: #ebe4d6;
+  --color-card: #fffcf6;
+  --color-ink: #141613;
+  --color-ink-muted: #5c6158;
+  --color-forest: #123c2e;
+  --color-forest-deep: #0a241c;
+  --color-leaf: #2f8a62;
+  --color-amber: #d4a017;
+  --color-urgent: #b42318;
+  --color-line: #ddd6c8;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: clip;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-leaf) 28%, white);
+  color: var(--color-forest-deep);
+}
+
+html:not([lang="en"]) {
+  --font-sans: var(--font-indic), "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-indic), "Instrument Serif", ui-serif, Georgia, serif;
+  line-height: 1.55;
+}
+
+html:not([lang="en"]) h1,
+html:not([lang="en"]) h2,
+html:not([lang="en"]) h3 {
+  line-height: 1.28;
+  letter-spacing: 0;
+}
